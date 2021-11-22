@@ -4,7 +4,7 @@ from scipy.integrate.odepack import odeint
 
 ##### problem 1 #####
 
-x,y = np.meshgrid(np.linspace(0,250,30), np.linspace(0,130,30))
+x,y = np.meshgrid(np.linspace(-10,250,20), np.linspace(-10,130,20))
 
 Lambda = 32.221
 b = 1.3847
@@ -23,7 +23,7 @@ def find_k(x,y,Lambda,b,Mu,c):
     k =  (u**2)/(b/(c*Lambda)) + (v**2)/(c/(b*Mu))
     return k, dotx, doty
 
-U,V = np.meshgrid(np.linspace(-20,120,1000),np.linspace(-20,120,1000))
+U,V = np.meshgrid(np.linspace(-10,120,1000),np.linspace(-10,120,1000))
 
 k1,x1,y1 = find_k(f1[0], f1[1], Lambda,b,Mu,c)
 k2,x2,y2 = find_k(f2[0], f2[1], Lambda,b,Mu,c)
@@ -44,7 +44,7 @@ n = np.sqrt(dx**2 + dy**2)
 u,v = dx/n, dy/n
 
 def LotkaVolterra(z,t,a,b,c,d):
-    x,y=z
+    x,y = z
     dydt = [a*x-b*x*y,-c*y+d*x*y]
     return dydt
 
@@ -58,6 +58,18 @@ plt.plot(sol2[:,0], sol2[:,1])
 plt.quiver(x,y,u,v)
 plt.show()
 
+##### problem 3 #####
+
+plt.contour(U,V,equation1, [k1])
+plt.contour(U,V,equation2, [k2])
+plt.plot(sol[:,0], sol[:,1], label='[21,44]')
+plt.plot(sol1[:,0], sol1[:,1], label='[72,23]')
+plt.plot(sol2[:,0], sol2[:,1], label='[2,16]')
+#plt.quiver(x,y,u,v)
+plt.xlabel("Hares")
+plt.ylabel("Lynx")
+plt.legend()
+plt.show()
 
 
 
