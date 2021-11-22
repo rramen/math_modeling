@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate.odepack import odeint
 
-##### problem 1 #####
+##### problem 1.1 #####
 
 x,y = np.meshgrid(np.linspace(-10,250,20), np.linspace(-10,130,20))
 
@@ -34,7 +34,7 @@ plt.contour(U,V,equation1, [k1])
 plt.contour(U,V,equation2, [k2])
 plt.show()
 
-##### problem 2 #####
+##### problem 1.2 #####
 
 dx = x*(Lambda-b*y)
 dy = y*(-Mu+c*x)
@@ -58,18 +58,27 @@ plt.plot(sol2[:,0], sol2[:,1])
 plt.quiver(x,y,u,v)
 plt.show()
 
-##### problem 3 #####
+##### problem 1.3 #####
 
 plt.contour(U,V,equation1, [k1])
 plt.contour(U,V,equation2, [k2])
 plt.plot(sol[:,0], sol[:,1], label='[21,44]')
 plt.plot(sol1[:,0], sol1[:,1], label='[72,23]')
 plt.plot(sol2[:,0], sol2[:,1], label='[2,16]')
-#plt.quiver(x,y,u,v)
 plt.xlabel("Hares")
 plt.ylabel("Lynx")
 plt.legend()
 plt.show()
+
+
+##### problem 2.3 #####
+
+
+
+
+
+##### problem 2.4 #####
+
 
 
 
