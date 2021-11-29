@@ -1,9 +1,11 @@
 import numpy as np
+import math
 import matplotlib.pyplot as plt
 from scipy.integrate.odepack import odeint
 
-##### problem 1.1 #####
+##### problem i #####
 
+#generating vector field mesh
 x,y = np.meshgrid(np.linspace(-10,250,20), np.linspace(-10,130,20))
 
 Lambda = 32.221
@@ -26,8 +28,8 @@ def find_k(x,y,Lambda,b,Mu,c):
 
 U,V = np.meshgrid(np.linspace(-10,120,1000),np.linspace(-10,120,1000))
 
-k1,x1,y1 = find_k(f1[0], f1[1], Lambda,b,Mu,c)
-k2,x2,y2 = find_k(f2[0], f2[1], Lambda,b,Mu,c)
+k1,x1,y1 = find_k(f1[0],f1[1],Lambda,b,Mu,c)
+k2,x2,y2 = find_k(f2[0],f2[1],Lambda,b,Mu,c)
 
 equation1 = ((U-x1)**2)/(b/(c*Lambda)) + ((V-y1)**2)/(c/(b*Mu))
 equation2 = ((U-x2)**2)/(b/(c*Lambda)) + ((V-y2)**2)/(c/(b*Mu))
@@ -35,7 +37,7 @@ plt.contour(U,V,equation1, [k1])
 plt.contour(U,V,equation2, [k2])
 plt.show()
 
-##### problem 1.2 #####
+##### problem ii #####
 
 dx = x*(Lambda-b*y)
 dy = y*(-Mu+c*x)
@@ -59,7 +61,7 @@ plt.plot(sol2[:,0], sol2[:,1])
 plt.quiver(x,y,u,v)
 plt.show()
 
-##### problem 1.3 #####
+##### problem iii #####
 
 plt.contour(U,V,equation1, [k1])
 plt.contour(U,V,equation2, [k2])
@@ -72,7 +74,7 @@ plt.legend()
 plt.show()
 
 
-##### problem 2.3 #####
+##### problem vi #####
 
 sol3 = odeint(LotkaVolterra, f1, t, args=(Lambda, b, Mu2, c))
 sol4 = odeint(LotkaVolterra, f2, t, args=(Lambda, b, Mu2, c))
@@ -95,8 +97,29 @@ plt.legend()
 plt.quiver(x,y,u,v)
 plt.show()
 
+h1 = Lambda*math.log(f1[1])+ Mu*math.log(f1[0]) - b*f1[1] - c*f1[0]
+h2 = Lambda*math.log(f2[1])+ Mu*math.log(f2[0]) - b*f2[1] - c*f2[0]
+h3 = Lambda*math.log(f3[1])+ Mu*math.log(f3[0]) - b*f3[1] - c*f3[0]
 
-##### problem 2.4 #####
+x1,y1 = np.meshgrid(np.linspace(0,300,1000), np.linspace(0,110,1000))
+
+
+
+##### problem vii #####
+
+
+
+
+
+##### problem viii #####
+
+
+
+
+
+
+##### problem ix #####
+
 
 
 
