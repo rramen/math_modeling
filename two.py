@@ -101,7 +101,18 @@ h1 = Lambda*math.log(f1[1])+ Mu*math.log(f1[0]) - b*f1[1] - c*f1[0]
 h2 = Lambda*math.log(f2[1])+ Mu*math.log(f2[0]) - b*f2[1] - c*f2[0]
 h3 = Lambda*math.log(f3[1])+ Mu*math.log(f3[0]) - b*f3[1] - c*f3[0]
 
-x1,y1 = np.meshgrid(np.linspace(0,300,1000), np.linspace(0,110,1000))
+
+
+x1,y1 = np.meshgrid(np.linspace(0,260,1000), np.linspace(0,110,1000))
+f = Lambda*np.log(y1) + Mu*np.log(x1) - b*y1 - c*x1
+
+plt.contour(x1,y1,f,[h1],label='[21,44]',colors='blue')
+plt.contour(x1,y1,f,[h2],label='[72,23]',colors='orange')
+plt.contour(x1,y1,f,[h3],label='[2,16]',colors='green')
+plt.xlabel("Hares")
+plt.ylabel("Lynx")
+plt.legend()
+plt.show()
 
 
 
