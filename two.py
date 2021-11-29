@@ -9,6 +9,7 @@ x,y = np.meshgrid(np.linspace(-10,250,20), np.linspace(-10,130,20))
 Lambda = 32.221
 b = 1.3847
 Mu = 27.432
+Mu2 = Mu+5
 c = 0.5433
 
 f1 = [21,44]
@@ -73,8 +74,26 @@ plt.show()
 
 ##### problem 2.3 #####
 
+sol3 = odeint(LotkaVolterra, f1, t, args=(Lambda, b, Mu2, c))
+sol4 = odeint(LotkaVolterra, f2, t, args=(Lambda, b, Mu2, c))
+sol5 = odeint(LotkaVolterra, f3, t, args=(Lambda, b, Mu2, c))
 
+x,y = np.meshgrid(np.linspace(-10,300,20), np.linspace(-10,130,20))
+dx = x*(Lambda-b*y)
+dy = y*(-Mu+c*x)
+t = np.linspace(0,1,1000)
 
+n = np.sqrt(dx**2 + dy**2)
+u,v = dx/n, dy/n
+
+plt.plot(sol3[:,0], sol3[:,1],label='[21,44]')
+plt.plot(sol4[:,0], sol4[:,1],label='[72,23]')
+plt.plot(sol5[:,0], sol5[:,1],label='[2,16]')
+plt.xlabel("Hares")
+plt.ylabel("Lynx")
+plt.legend()
+plt.quiver(x,y,u,v)
+plt.show()
 
 
 ##### problem 2.4 #####
