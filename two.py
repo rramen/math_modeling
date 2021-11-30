@@ -105,9 +105,9 @@ h3 = Lambda*math.log(f3[1])+ Mu*math.log(f3[0]) - b*f3[1] - c*f3[0]
 x1,y1 = np.meshgrid(np.linspace(0,260,1000), np.linspace(0,110,1000))
 f = Lambda*np.log(y1) + Mu*np.log(x1) - b*y1 - c*x1
 
-plt.contour(x1,y1,f,[h1],label='[21,44]',colors='blue')
-plt.contour(x1,y1,f,[h2],label='[72,23]',colors='orange')
-plt.contour(x1,y1,f,[h3],label='[2,16]',colors='green')
+plt.contour(x1,y1,f,[h1],colors='blue')
+plt.contour(x1,y1,f,[h2],colors='orange')
+plt.contour(x1,y1,f,[h3],colors='green')
 plt.xlabel("Hares")
 plt.ylabel("Lynx")
 plt.legend()
@@ -173,15 +173,30 @@ plt.plot(t2, xy_sol2[:,1], 'r', label='Lynx')
 plt.legend()
 plt.show()
 
-##### problem x #####
+year = []
+
+for i in range(0,60):
+    year.append(i)
 
 
+lynx = [44,20,9,5,5,6,11,23,32,34,23,15,7,4,5,5,16,36,
+        77,68,37,16,8,5,7,11,19,31,43,27,18,15,9,8,8,27,52,
+        74,79,34,19,12,8,9,13,20,37,56,39,27,15,4,6,9,19,
+        36,59,61,39,10]
+    
+hares = [21,12,24,50,80,80,90,69,80,93,72,27,14,16,38,5,153,
+        145,106,46,23,2,4,8,7,60,46,50,103,87,68,17,10,17,
+        16,15,46,55,137,137,95,37,22,50,54,65,60,81,95,56,
+        18,5,2,15,2,6,45,50,58,20]
 
+t3 = np.linspace(0,59,60)
 
-
-
-##### problem xi #####
-
+plt.plot(t3, hares, 'b', label='Hares')
+plt.plot(t3, lynx, 'r', label=('Lynx'))
+plt.xlabel('Year')
+plt.ylabel('Population')
+plt.legend()
+plt.show()
 
 
 
