@@ -122,8 +122,6 @@ q = 0.88
 #equilibrium points
 x_star = (Mu/c)**(1/q)
 y_star = (Lambda/b)*((Mu/c)**((1/q)-1))*(1-(1/K)*x_star)
-#y_star = (Lambda*((Mu/c)**(((1-q)/q)))-((1/K)*((Mu/c)**(((2-q/q))))))/b 
-
 
 def solve_linear_sys(s,t):
     u,v = s[0],s[1]
