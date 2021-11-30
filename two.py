@@ -158,15 +158,20 @@ plt.show()
 
 ##### problem ix #####
 
+def solving_other_system(s,t):
+    x,y = s[0],s[1]
+    dxdt = Lambda*x*(1-(x/K)) - b*(x**q)*y
+    dydt = y*(c*(x**q)-Mu)
+    return [dxdt,dydt]
+
 t2 = np.linspace(0,5,10000)
 
-xy_sol2 = odeint(solve_linear_sys, f1, t2)
+xy_sol2 = odeint(solving_other_system, f1, t2)
 
 plt.plot(t2, xy_sol2[:,0], 'b', label='Hares')
 plt.plot(t2, xy_sol2[:,1], 'r', label='Lynx')
 plt.legend()
 plt.show()
-
 
 ##### problem x #####
 
