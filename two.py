@@ -101,7 +101,6 @@ h2 = Lambda*math.log(f2[1])+ Mu*math.log(f2[0]) - b*f2[1] - c*f2[0]
 h3 = Lambda*math.log(f3[1])+ Mu*math.log(f3[0]) - b*f3[1] - c*f3[0]
 
 
-
 x1,y1 = np.meshgrid(np.linspace(0,260,1000), np.linspace(0,110,1000))
 f = Lambda*np.log(y1) + Mu*np.log(x1) - b*y1 - c*x1
 
