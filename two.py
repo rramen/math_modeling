@@ -139,17 +139,22 @@ new_sol = odeint(solve_linear_sys, [u_0,v_0], t)
 plt.plot(new_sol[:,0] + x_star, new_sol[:,1] + y_star)
 plt.xlabel("Hares")
 plt.ylabel("Lynx")
-plt.legend()
 plt.show()
-
-
 
 ##### problem viii #####
 
+x2,y2 = np.meshgrid(np.linspace(50,110,20), np.linspace(15,55,20))
 
+dxdt = Lambda*x2*(1-(x2/K)) - b*(x2**q)*y2
+dydt = y2*(c*(x2**q)-Mu)
+n = np.sqrt(dxdt**2 + dydt**2)
+dxdt,dydt = dxdt/n, dydt/n
 
-
-
+plt.quiver(x2,y2,dxdt,dydt)
+plt.plot(new_sol[:,0] + x_star, new_sol[:,1] + y_star)
+plt.xlabel("Hares")
+plt.ylabel("Lynx")
+plt.show()
 
 ##### problem ix #####
 
