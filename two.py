@@ -122,12 +122,14 @@ q = 0.88
 #equilibrium points
 x_star = (Mu/c)**(1/q)
 y_star = (Lambda/b)*((Mu/c)**((1/q)-1))*(1-(1/K)*x_star)
+#y_star = (Lambda*((Mu/c)**(((1-q)/q)))-((1/K)*((Mu/c)**(((2-q/q))))))/b 
+
 
 def solve_linear_sys(s,t):
     u,v = s[0],s[1]
     uu = Lambda*(1-(2*x_star)/K)-b*y_star*q*(x_star**(q-1))
     uv = -b*(x_star**q)
-    vu = c*y_star*q*(x_star**(1-q))
+    vu = c*y_star*q*(x_star**(q-1))
     vv = -Mu + c*(x_star**q)
     dudt = uu*u + uv*v
     dvdt = vu*u + vv*v
@@ -137,10 +139,10 @@ t = np.linspace(0,3,1000)
 new_sol = odeint(solve_linear_sys, [u_0,v_0], t)
 
 plt.plot(new_sol[:,0] + x_star, new_sol[:,1] + y_star)
+plt.xlabel("Hares")
+plt.ylabel("Lynx")
+plt.legend()
 plt.show()
-
-
-
 
 
 
