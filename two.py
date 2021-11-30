@@ -143,7 +143,7 @@ plt.show()
 
 ##### problem viii #####
 
-x2,y2 = np.meshgrid(np.linspace(50,110,20), np.linspace(15,55,20))
+x2,y2 = np.meshgrid(np.linspace(55,110,20), np.linspace(20,45,20))
 
 dxdt = Lambda*x2*(1-(x2/K)) - b*(x2**q)*y2
 dydt = y2*(c*(x2**q)-Mu)
@@ -158,9 +158,14 @@ plt.show()
 
 ##### problem ix #####
 
+t2 = np.linspace(0,5,10000)
 
+xy_sol2 = odeint(solve_linear_sys, f1, t2)
 
-
+plt.plot(t2, xy_sol2[:,0], 'b', label='Hares')
+plt.plot(t2, xy_sol2[:,1], 'r', label='Lynx')
+plt.legend()
+plt.show()
 
 
 ##### problem x #####
